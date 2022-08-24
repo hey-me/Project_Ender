@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.header_fixed {
+	height: 500px;
+	overflow: auto;
+	margin-top: 30px;
+	padding-left: 37%;
+}
+
+.header_fixed thead th {
+	position: sticky;
+	top: 0;
+	background-color: #e9967a;
+	color: #fff;
+	font-weight: 800;
+	font-size: 15px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #dddddd;
+	padding: 10px 20px;
+	font-size: 14px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+	background-color: #EDEEF1;
+}
+
+tr:hover td {
+	color: #e9967a;
+	cursor: pointer;
+	background-color: #ffffff;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+@media ( max-width : 991px) {
+	.header_fixed {
+		height: 500px;
+		overflow: auto;
+		margin-top: 30px;
+		padding-left: 26%;
+	}
+}
+
+@media ( max-width : 768px) {
+	.header_fixed {
+		height: 500px;
+		overflow: auto;
+		margin-top: 30px;
+		padding-left: 26%;
+	}
+}
+
+@media ( max-width : 450px) {
+	.header_fixed {
+		height: 500px;
+		overflow: auto;
+		margin-top: 30px;
+		padding-left: 26.5%;
+	}
+}

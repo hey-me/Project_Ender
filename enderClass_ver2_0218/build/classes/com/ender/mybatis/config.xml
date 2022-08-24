@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- properties 파일 위치 -->
+	<properties resource="com/ender/mybatis/db.properties" />
+
+	<!-- 별명 지정해주기 -->
+	<typeAliases>
+		<typeAlias type="com.ender.usermodel.UserDTO" alias="userDTO" />
+		<typeAlias type="com.ender.model.BookVO" alias="bookVO" />
+		<typeAlias type="com.ender.model.ClassVO" alias="classVO" />
+		<typeAlias type="com.ender.model.CartVO" alias="cartVO" />
+		<typeAlias type="com.ender.model.CartListVO" alias="cartListVO" />
+		<typeAlias type="com.ender.model.OrderVO" alias="orderVO" />
+		<typeAlias type="com.ender.model.OrderListVO" alias="orderListVO" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+
+			<transactionManager type="JDBC" />
+
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+
+		</environment>
+	</environments>
+
+	<!-- mappers 파일 위치 -->
+	<mappers>
+		<mapper resource="com/ender/mybatis/UserMapper.xml" />
+	</mappers>
+
+</configuration>

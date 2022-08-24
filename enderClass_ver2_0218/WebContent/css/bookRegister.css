@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+form {
+	font-size: 20px;
+}
+
+form .submit-btn {
+	    color: #fff;
+    background-color: green;
+    border-color: #dc3545;
+    border-radius: 0.5rem;
+    width: 70px;
+}
+
+form .cancel-btn {
+	    color: #fff;
+    background-color: red;
+    border-color: #dc3545;
+    border-radius: 0.5rem;
+    width: 70px;
+}
+

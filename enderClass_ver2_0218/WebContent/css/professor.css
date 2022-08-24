@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* Container */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+
+/* Section */
+.container section {
+  min-width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  border: 1px solid;
+}
+
+.container section:nth-child(2) {
+  background: #000;
+}
+
+.container section:nth-child(3) {
+  background: #000;
+}
+
+.container section .content {
+  max-width: 800px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  margin-left: 140px;
+}
+
+.container section .content:before {
+	
+}
+
+.container section .content h2 {
+  font-size: 4em;
+  color: #fff;
+}
+
+.container section .content p {
+  font-size: 1.3em;
+  line-height: 1.4em;
+  color: #fff;
+}
+
+/* Content */
+.content .animation1-container {
+  left: 50%;
+  width: 467.107px;
+  height: 404.776px;
+  bottom: -1.50195px;
+  margin-left: -30.0391px;
+  z-index: 135;
+  transform: matrix(1, 0, 0, 1, -352.777, 0);
+  opacity: 1;
+}
+
+.content .animation1-container .widget-picture {
+  left: 50%;
+  top: 50%;
+  width: 622px;
+  height: 539px;
+  margin-left: -311px;
+  margin-top: -269.5px;
+  z-index: 135;
+  zoom: 0.750977;
+}
+
+.content .animation1-container .widget-picture img {
+  top: 80%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+}
+
+.content .animation2-container {
+  left: 50%;
+  width: 273.533px;
+  height: 393.768px;
+  bottom: -2.00391px;
+  margin-left: 623.716px;
+  z-index: 137;
+  transform: matrix(1, 0, 0, 1, -638.39, 0);
+  opacity: 1;
+}
+
+.content .animation2-container .widget-picture {
+  left: 50%;
+  top: 50%;
+  width: 273px;
+  height: 393px;
+  margin-left: -136.5px;
+  margin-top: -196.5px;
+  z-index: 137;
+  zoom: 1.00195;
+}
+
+.content .animation2-container .widget-picture img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@media (max-width: 991px) {
+  .container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    transform: none !important;
+  }
+}

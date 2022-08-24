@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ender.mybatis.UserMapper">
+
+	<!-- 회원가입 -->
+	<insert id="userInsert" parameterType="userDTO">
+		insert into	member(userName,userID,userPW,userBirth,userPhone,userAddress,userGrade) values(#{userName},#{userID},#{userPW},#{userBirth},#{userPhone},#{userAddress},#{userGrade})
+	</insert>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="userIdCheck" parameterType="String" resultType="int">
+	    SELECT COUNT(userID) FROM member WHERE userID=#{userID}
+	</select>
+	
+	<!-- 비밀번호 검사 -->
+	<select id="userPwCheck" parameterType="String" resultType="int">
+	    SELECT COUNT(userID) FROM member WHERE userPW=#{userPW}
+	</select>
+
+	<!-- 로그인 -->
+	<select id="userLogin" parameterType="userDTO" resultType="int">
+		SELECT 
+			COUNT(*)
+			
+		FROM 
+			member 
+		WHERE
+			userID = #{userID}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="searchID" parameterType="userDTO" resultType="int">
+	    SELECT
+	    	COUNT(userID)
+	    FROM
+	    	member
+	    WHERE
+	    	userName=#{userName}
+	    AND
+	    	userBirth=#{userBirth}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="searchPW" parameterType="userDTO" resultType="int">
+	    SELECT
+	    	COUNT(userPW)
+	    FROM
+	    	member
+	    WHERE
+	    	userName=#{userName}
+	    AND
+	    	userID=#{userID}
+	</select>
+
+	<!-- 아이디로 상세 정보 -->
+	<select id="userIdContent" parameterType="String"	resultType="userDTO">
+		select * from member where userID=#{userID}
+	</select>
+	
+	<!-- 이름으로 상세 정보 -->
+	<select id="userNameContent" parameterType="String"	resultType="userDTO">
+		select * from member where userName=#{userName}
+	</select>
+	
+	<!-- 이름으로 목록 출력 -->
+	<select id="userNameList" parameterType="String" resultType="userDTO">
+		select * from member where userName=#{userName}
+	</select>
+	
+	<!-- 유저 목록 -->
+	<select id="userList" resultType="userDTO">
+		select * from user
+	</select>
+	
+	<!-- 회원 업데이트 -->
+	<update id="userUpdate" parameterType="userDTO">
+	    update user set userPassword=#{userPassword}, userEmail=#{userEmail}, userPhone=#{userPhone} where userID=#{userID}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="userDelete" parameterType="String">
+	    delete from user where userID=#{userID}
+	</delete>
+	
+	<!-- 이미지 업데이트 -->
+	<update id="userProfile" parameterType="userDTO">
+	    update user set userProfile=#{userProfile} where userID=#{userID}
+	</update>
+	
+	<!-- 이미지 불러오기 -->
+	<select id="userImage" parameterType="String">
+	    select userProfile from user where userID=#{userID}
+	</select>
+	
+	
+	
+	
+	<!-- 수강  -->
+	
+	<!-- 책 목록  -->
+	<select id="bookList" resultType="bookVO">
+		select * from book
+	</select>
+	
+	<select id="userBookList" resultType="bookVO">
+		select * from book
+	</select>
+	
+	<!-- 책 등록 -->
+	<insert id="bookInsert" parameterType="bookVO">
+		insert into book(b_name, b_image, b_pub, b_price,b_info)
+		values (#{b_name}, #{b_image},#{b_pub}, #{b_price},#{b_info})
+	</insert>
+	
+	<!-- 책 삭제  -->
+	<delete id="bookDelete" parameterType="Integer">
+		delete from book where b_num = #{b_num}	    
+	</delete>
+	
+	<!-- 책 정보 -->
+	<select id="bookContent" parameterType="Integer" resultType="bookVO">
+	    select * from book where b_num = #{b_num}
+	</select>
+	
+	<!-- 책 정보 수정 -->
+	<update id="bookUpdate" parameterType="bookVO">
+	    update book set b_name=#{b_name}, b_image=#{b_image}, b_pub=#{b_pub}, b_price=#{b_price} where b_num = #{b_num}
+	</update>
+	
+	<!-- 강의 목록 -->
+	<select id="classList" resultType="classVO">
+		select * from class
+	</select>
+	<select id="userClassList" resultType="classVO">
+		select * from class
+	</select>
+	
+	<!-- 강의 등록 -->
+	<insert id="classInsert" parameterType="classVO">
+		insert into class(c_name, c_tr, c_price, c_content,b_num)
+		values (#{c_name}, #{c_tr}, #{c_price}, #{c_content},#{b_num})
+	</insert>
+	
+	<!-- 강의 삭제 -->
+	<delete id="classDelete" parameterType="Integer">
+		delete from class where c_num = #{c_num}	    
+	</delete>
+	
+	<!-- 강의 상세보기 -->
+	<select id="classContent" parameterType="Integer" resultType="classVO">
+	    select * from class where c_num = #{c_num}
+	</select>
+	
+	<select id="userClassContent" parameterType="Integer" resultType="classVO">
+	    select * from class where c_num = #{c_num}
+	</select>
+	
+	<!-- 강의 수정 -->
+	<update id="classUpdate" parameterType="classVO">
+	    update class set c_name=#{c_name}, c_tr=#{c_tr}, c_price=#{c_price}, c_content=#{c_content} where c_num = #{c_num}
+	</update>
+	
+	<!-- 카트 등록.-->
+	<insert id="userCartInsert" parameterType="cartVO">
+	    insert into cart(userID, c_num, b_num) values (#{userID} ,#{c_num}, #{b_num})
+	</insert>
+	<!-- 카트 목록 -->
+	<select id="userCartList" parameterType="String" resultType="cartListVO">
+	  select c.c_name, c.c_tr, c.c_price, b.b_image,b.b_name, b.b_price, c.c_num, b.b_num from class c, book b, cart cart where cart.c_num = c.c_num and cart.b_num=b.b_num and cart.userID=#{userID};
+	</select>
+	<!-- 카트 삭제 -->
+	<delete id="userCartDelete" parameterType="cartVO">
+		delete from cart where c_num = #{c_num} and userID=#{userID};	    
+	</delete>
+	
+	<!-- 주문 등록.-->
+	<insert id="orderInsert" parameterType="orderVO">
+	    insert into receipt(userID, c_num, b_num) values (#{userID} ,#{c_num}, #{b_num})
+	</insert>
+	<!-- 주문 목록 -->
+	<select id="orderList" parameterType="String" resultType="orderListVO">
+	  select c.c_name, c.c_tr, c.c_price, b.b_image,b.b_name, b.b_price from class c, book b, receipt o where  o.userID=#{userID} and o.c_num = c.c_num and o.b_num = b.b_num;
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>
